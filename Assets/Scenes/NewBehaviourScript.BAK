@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NewBehaviourScript : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+		public List<Vector3> basyo = new List<Vector3>(); 
+        private List<Cube> objList = new List<Cube>(); 
+        private List<int> randomList = new List<int>(); 
+        private int count = 0;
+        while (true) { // 無限ループ
+            int i = Random.Range (0, basyo.Count-1); // ランダム生成
+            if(randomList.Contains(i)){
+                continue; // ランダムで出てきた数字がすでに1度出てきてたら、もう一度
+            }
+            count++;
+            GameObject obj = Instantiate (obj1, basyo[i] ,Quaternion.identity)as GameObject; 
+            objList.Add(obj); // 作ったインスタンスを保持
+            randomList.Add(i);  // ランダムで出てきた数字を保持
+
+            if(count >= basyo.Count){
+                break;  // basyo数分のインスタンスを作ったらループを抜ける
+            }
+        }
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
